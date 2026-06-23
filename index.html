@@ -3,202 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Jhojany ❤️</title>
+<title>Jhojany ❤️ Daniel</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
 
 body{
-background:linear-gradient(180deg,#0f172a,#1e1b4b,#312e81);
-font-family:Arial,sans-serif;
-overflow:hidden;
 height:100vh;
+overflow:hidden;
+background:linear-gradient(180deg,#0f172a,#1e293b,#000);
 display:flex;
 justify-content:center;
 align-items:center;
 color:white;
 }
 
-.stars{
+.estrellas{
 position:fixed;
 width:100%;
 height:100%;
-background-image:
-radial-gradient(white 1px, transparent 1px);
-background-size:40px 40px;
-opacity:.6;
+top:0;
+left:0;
+}
+
+.estrella{
+position:absolute;
+color:white;
+animation:brillar 2s infinite;
+}
+
+@keyframes brillar{
+50%{opacity:.2;}
+}
+
+.corazon{
+position:absolute;
+color:#ff4d6d;
+animation:subir 8s linear infinite;
+font-size:25px;
+}
+
+@keyframes subir{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+100%{
+transform:translateY(-100px);
+opacity:1;
+}
 }
 
 .contenedor{
 text-align:center;
 z-index:10;
-padding:20px;
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+width:90%;
+max-width:500px;
 }
 
-.corazon{
-font-size:100px;
-animation:latido 1.2s infinite;
-cursor:pointer;
-}
-
-@keyframes latido{
-0%,100%{transform:scale(1);}
-50%{transform:scale(1.15);}
+img{
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:50%;
+border:5px solid #ff4d6d;
+box-shadow:0 0 30px #ff4d6d;
+margin-bottom:15px;
 }
 
 h1{
-margin-top:15px;
-font-size:2.5rem;
+color:#ff8fab;
+margin-bottom:10px;
+}
+
+p{
+line-height:1.6;
 }
 
 button{
 margin-top:20px;
-padding:15px 30px;
+padding:12px 25px;
 border:none;
-border-radius:30px;
-font-size:18px;
+border-radius:20px;
 background:#ff4d6d;
 color:white;
+font-size:18px;
 cursor:pointer;
 }
 
-.carta{
+button:hover{
+transform:scale(1.1);
+}
+
+#mensaje{
 display:none;
-max-width:750px;
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(10px);
-padding:30px;
-border-radius:20px;
 margin-top:20px;
-line-height:1.9;
-animation:fade 1s;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-.flotante{
-position:absolute;
-color:#ff5c8a;
-animation:caer linear infinite;
-}
-
-@keyframes caer{
-0%{
-transform:translateY(-100px);
-}
-100%{
-transform:translateY(110vh);
-}
-}
-
-#contador{
-margin-top:15px;
-font-weight:bold;
+font-size:18px;
 color:#ffd6e0;
+animation:aparecer 2s;
+}
+
+@keyframes aparecer{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars"></div>
+<div class="estrellas" id="estrellas"></div>
 
 <div class="contenedor">
 
-<div class="corazon">❤️</div>
+<img src="image.png">
 
-<h1>Para Jhojany</h1>
+<h1>Jhojany ❤️ Daniel</h1>
 
-<p>Hay algo que Daniel quiere decirte...</p>
+<p>
+Desde noviembre hay algo que no ha cambiado:
+cada vez que pienso en ti, aparece una sonrisa.
+No sé si el destino tenga algo preparado para nosotros,
+pero sí sé que conocerte ha sido algo muy especial.
+</p>
 
-<button onclick="abrirCarta()">
+<button onclick="mostrarMensaje()">
 💌 Abrir mi corazón
 </button>
 
-<div class="carta" id="carta">
-
-<h2>❤️ Para ti, Jhojany ❤️</h2>
-
-<p>
-Desde noviembre hay algo que llevo guardando en mi corazón.
-</p>
-
-<p>
-A veces las personas llegan a nuestra vida sin avisar y terminan convirtiéndose en alguien muy especial.
-Eso fue exactamente lo que pasó contigo.
-</p>
-
-<p>
-Poco a poco comenzaste a ocupar mis pensamientos, mis sonrisas y muchos de mis mejores momentos.
-</p>
-
-<p>
-Me gusta tu forma de ser, tu sonrisa, tu alegría y esa manera tan especial que tienes de hacer que los días sean diferentes.
-</p>
-
-<p>
-No sé qué nos depare el futuro, pero sí sé que quería ser sincero contigo y decirte algo que llevo guardando desde hace tiempo:
-</p>
-
-<h2 style="color:#ff9db5;">
-Me gustas mucho, Jhojany ❤️
-</h2>
-
-<p>
-Gracias por existir y por hacer que desde noviembre mis días tengan un brillo diferente.
-</p>
-
-<p>
-Tal vez estas palabras no sean perfectas, pero cada una de ellas nace desde lo más sincero de mi corazón.
-</p>
-
-<p>
-Con cariño,
-<br><br>
-<b>Daniel 💖</b>
-</p>
-
-<div id="contador"></div>
-
+<div id="mensaje">
+✨ Jhojany, quizás no soy perfecto, pero cada día encuentro más razones para admirarte. Me gusta tu forma de ser, tu sonrisa y la manera en que haces especial cualquier momento. Desde noviembre ocupas un lugar importante en mis pensamientos y hoy quería que lo supieras. ❤️🌹
 </div>
 
 </div>
 
 <script>
 
-function abrirCarta(){
-document.getElementById("carta").style.display="block";
+function mostrarMensaje(){
+document.getElementById("mensaje").style.display="block";
 }
 
-const inicio=new Date("2024-11-01");
-
-function actualizar(){
-const ahora=new Date();
-const dias=Math.floor((ahora-inicio)/(1000*60*60*24));
-
-document.getElementById("contador").innerHTML=
-"💕 Han pasado " + dias + " días desde noviembre 💕";
+for(let i=0;i<80;i++){
+let estrella=document.createElement("div");
+estrella.classList.add("estrella");
+estrella.innerHTML="✦";
+estrella.style.left=Math.random()*100+"%";
+estrella.style.top=Math.random()*100+"%";
+estrella.style.fontSize=(Math.random()*10+10)+"px";
+document.getElementById("estrellas").appendChild(estrella);
 }
-
-setInterval(actualizar,1000);
-actualizar();
 
 setInterval(()=>{
-const c=document.createElement("div");
-c.className="flotante";
-c.innerHTML="❤️";
-c.style.left=Math.random()*100+"vw";
-c.style.fontSize=(20+Math.random()*30)+"px";
-c.style.animationDuration=(4+Math.random()*5)+"s";
-
-document.body.appendChild(c);
+let corazon=document.createElement("div");
+corazon.classList.add("corazon");
+corazon.innerHTML="❤";
+corazon.style.left=Math.random()*100+"vw";
+document.body.appendChild(corazon);
 
 setTimeout(()=>{
-c.remove();
-},9000);
+corazon.remove();
+},8000);
 
 },300);
 
