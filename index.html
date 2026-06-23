@@ -1,129 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Regalo</title>
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: black;
-        font-family: Arial, sans-serif;
-    }
-
-    /* Fondo galaxia */
-    .stars {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, #1a1a40, #000);
-        overflow: hidden;
-    }
-
-    .stars::after {
-        content: "";
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background: url('https://i.imgur.com/NM8Zl6g.png');
-        opacity: 0.2;
-        animation: moveStars 60s linear infinite;
-    }
-
-    @keyframes moveStars {
-        from {transform: translate(0,0);}
-        to {transform: translate(-500px,-500px);}
-    }
-
-    /* Caja regalo */
-    .box {
-        width: 200px;
-        height: 200px;
-        background: red;
-        position: relative;
-        cursor: pointer;
-        border-radius: 10px;
-        transition: 0.5s;
-        z-index: 2;
-    }
-
-    .box::before {
-        content: "TOCA PARA ABRIR";
-        position: absolute;
-        color: white;
-        font-weight: bold;
-        width: 100%;
-        text-align: center;
-        top: 80px;
-    }
-
-    .ribbon {
-        position: absolute;
-        width: 100%;
-        height: 20px;
-        background: gold;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    /* Rosa */
-    .rose {
-        display: none;
-        font-size: 80px;
-        animation: bloom 2s ease-in-out forwards;
-    }
-
-    @keyframes bloom {
-        0% {transform: scale(0); opacity: 0;}
-        100% {transform: scale(1.5); opacity: 1;}
-    }
-
-    .message {
-        display: none;
-        color: white;
-        margin-top: 20px;
-        font-size: 24px;
-        text-align: center;
-        animation: fadeIn 3s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 2;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Jhojany ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        starlight: '#E0E7FF',
+                        space: '#0F172A',
+                        love: '#BE185D'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .bg-galaxy {
+                background: radial-gradient(ellipse at top, #1E1B4B 0%, #0F172A 40%, #000000 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            .stars {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: 
+                    radial-gradient(2px 2px at 20px 30px, white, transparent),
+                    radial-gradient(2px 2px at 60px 70px, white, transparent),
+                    radial-gradient(1px 1px at 50px 50px, white, transparent),
+                    radial-gradient(1px 1px at 130px 80px, white, transparent);
+                background-size: 200px 200px;
+                animation: twinkle 5s ease-in-out infinite;
+            }
+            @keyframes twinkle {
+                0%, 100% { opacity: 0.7; }
+                50% { opacity: 1; }
+            }
+            .heart-beat {
+                animation: beat 1.2s ease infinite alternate;
+            }
+            @keyframes beat {
+                from { transform: scale(1); }
+                to { transform: scale(1.15); }
+            }
+            .fade-in {
+                animation: fadeIn 1.5s ease forwards;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="bg-galaxy min-h-screen flex flex-col items-center justify-center text-white p-5 relative">
+    <div class="stars"></div>
 
-<div class="stars"></div>
-
-<div class="container">
-    <div class="box" onclick="openGift()">
-        <div class="ribbon"></div>
+    <div id="pantalla-inicio" class="z-10 text-center">
+        <h2 class="text-2xl md:text-3xl font-light mb-6">Para ti, Jhojany ✨</h2>
+        <button onclick="mostrarMensaje()" class="heart-beat text-[clamp(5rem,15vw,8rem)] text-love hover:text-pink-500 transition duration-300">
+            <i class="fa fa-heart"></i>
+        </button>
+        <p class="mt-4 text-lg">Toca el corazón</p>
     </div>
 
-    <div class="rose" id="rose">🌹</div>
-    <div class="message" id="msg">ME GUSTAS MUCHO 💖</div>
-</div>
+    <div id="mensaje" class="z-10 text-center max-w-2xl hidden fade-in">
+        <h1 class="text-3xl md:text-4xl font-bold mb-6 text-starlight">¡Hola Jhojany!</h1>
+        
+        <p class="text-lg md:text-xl leading-relaxed mb-4">
+            Desde que te conocí, algo cambió en mí. Cada vez que te veo o te escribo, se me dibuja una sonrisa sin querer.
+        </p>
 
-<script>
-function openGift() {
-    document.querySelector('.box').style.display = 'none';
-    document.getElementById('rose').style.display = 'block';
-    document.getElementById('msg').style.display = 'block';
-}
-</script>
+        <p class="text-lg md:text-xl leading-relaxed mb-4">
+            Me encanta tu forma de ser, tu alegría y todo lo que eres. No quiero quedarme con las ganas de decírtelo: me gustas mucho, Jhojany.
+        </p>
 
+        <p class="text-lg md:text-xl leading-relaxed mb-8">
+            Me encantaría tener la oportunidad de conocerte más y ver si podemos escribir algo bonito juntos ❤️
+        </p>
+
+        <div class="text-2xl text-pink-300 font-semibold">
+            ¿Me das la oportunidad?
+        </div>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3" type="audio/mpeg">
+    
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById('pantalla-inicio').classList.add('hidden');
+            document.getElementById('mensaje').classList.remove('hidden');
+            document.getElementById('musica').play().catch(e => console.log("Reproducción iniciada por interacción"));
+        }
+    </script>
 </body>
 </html>
