@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jhojany ❤️ Daniel</title>
+<title>Jhojany ✨ Daniel</title>
 
 <style>
 *{
@@ -14,9 +14,9 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-height:100vh;
 overflow:hidden;
-background:linear-gradient(180deg,#0f172a,#1e293b,#000);
+height:100vh;
+background:radial-gradient(circle at center,#312e81,#0f172a,#000);
 display:flex;
 justify-content:center;
 align-items:center;
@@ -41,11 +41,94 @@ animation:brillar 2s infinite;
 50%{opacity:.2;}
 }
 
+.contenedor{
+z-index:10;
+text-align:center;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:25px;
+max-width:700px;
+width:90%;
+}
+
+.foto{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #ff6b9d;
+box-shadow:0 0 35px #ff6b9d;
+margin-bottom:20px;
+animation:latir 2s infinite;
+}
+
+@keyframes latir{
+50%{
+transform:scale(1.05);
+}
+}
+
+h1{
+font-size:2.5rem;
+margin-bottom:10px;
+color:#ffd6e7;
+}
+
+.sub{
+margin-bottom:20px;
+color:#ddd;
+}
+
+.btn{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+.carta{
+display:none;
+margin-top:25px;
+text-align:left;
+line-height:1.9;
+background:rgba(255,255,255,.12);
+padding:20px;
+border-radius:15px;
+animation:aparecer 1s;
+}
+
+@keyframes aparecer{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.corazon,
+.rosa{
+position:fixed;
+font-size:28px;
+pointer-events:none;
+}
+
 .corazon{
-position:absolute;
-color:#ff4d6d;
-animation:subir 8s linear infinite;
-font-size:25px;
+animation:subir 7s linear forwards;
+}
+
+.rosa{
+animation:caer 8s linear forwards;
 }
 
 @keyframes subir{
@@ -59,67 +142,12 @@ opacity:1;
 }
 }
 
-.contenedor{
-text-align:center;
-z-index:10;
-background:rgba(255,255,255,.08);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(10px);
-width:90%;
-max-width:500px;
+@keyframes caer{
+0%{
+transform:translateY(-100px);
 }
-
-img{
-width:220px;
-height:220px;
-object-fit:cover;
-border-radius:50%;
-border:5px solid #ff4d6d;
-box-shadow:0 0 30px #ff4d6d;
-margin-bottom:15px;
-}
-
-h1{
-color:#ff8fab;
-margin-bottom:10px;
-}
-
-p{
-line-height:1.6;
-}
-
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:20px;
-background:#ff4d6d;
-color:white;
-font-size:18px;
-cursor:pointer;
-}
-
-button:hover{
-transform:scale(1.1);
-}
-
-#mensaje{
-display:none;
-margin-top:20px;
-font-size:18px;
-color:#ffd6e0;
-animation:aparecer 2s;
-}
-
-@keyframes aparecer{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
+100%{
+transform:translateY(110vh);
 }
 }
 </style>
@@ -127,59 +155,108 @@ transform:translateY(0);
 
 <body>
 
+<!-- Si subes musica.mp3, quita los comentarios
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+-->
+
 <div class="estrellas" id="estrellas"></div>
 
 <div class="contenedor">
 
-<img src="image.png">
+<img src="image.png" class="foto">
 
-<h1>Jhojany ❤️ Daniel</h1>
+<h1>🌌 Jhojany ✨ Daniel 🌌</h1>
 
-<p>
-Desde noviembre hay algo que no ha cambiado:
-cada vez que pienso en ti, aparece una sonrisa.
-No sé si el destino tenga algo preparado para nosotros,
-pero sí sé que conocerte ha sido algo muy especial.
+<p class="sub">
+Hay personas que llegan a tu vida y la hacen más bonita sin darse cuenta...
 </p>
 
-<button onclick="mostrarMensaje()">
-💌 Abrir mi corazón
+<button class="btn" onclick="abrirCarta()">
+💖 Descubre un secreto
 </button>
 
-<div id="mensaje">
-✨ Jhojany, quizás no soy perfecto, pero cada día encuentro más razones para admirarte. Me gusta tu forma de ser, tu sonrisa y la manera en que haces especial cualquier momento. Desde noviembre ocupas un lugar importante en mis pensamientos y hoy quería que lo supieras. ❤️🌹
+<div class="carta" id="carta">
+
+<h2>💌 Para Jhojany</h2>
+
+<p>
+A veces aparecen personas que, sin buscarlo, logran llamar nuestra atención de una manera especial.
+</p>
+
+<p>
+No sé exactamente cuándo empezó, pero con el tiempo descubrí que me gustaba pensar en ti, admirar tu sonrisa y encontrar algo bonito en cada recuerdo que tengo de ti.
+</p>
+
+<p>
+Quizás nunca te había dicho esto, pero eres una persona que transmite algo diferente. Hay algo en tu forma de ser que hace especiales incluso los días más simples.
+</p>
+
+<p>
+No escribo esto esperando una respuesta. Lo hago porque quería que supieras que ocupas un lugar especial en mis pensamientos.
+</p>
+
+<p>
+Entre millones de estrellas del universo, algunas brillan más que otras...
+y para mí, tú eres una de ellas. ✨❤️
+</p>
+
+<p style="text-align:center;font-size:22px;">
+🌹 Con cariño 🌹
+<br><br>
+<b>Daniel ❤️</b>
+</p>
+
 </div>
 
 </div>
 
 <script>
 
-function mostrarMensaje(){
-document.getElementById("mensaje").style.display="block";
+function abrirCarta(){
+
+document.getElementById("carta").style.display="block";
+
+/*
+document.getElementById("musica").play();
+*/
+
 }
 
-for(let i=0;i<80;i++){
-let estrella=document.createElement("div");
-estrella.classList.add("estrella");
-estrella.innerHTML="✦";
-estrella.style.left=Math.random()*100+"%";
-estrella.style.top=Math.random()*100+"%";
-estrella.style.fontSize=(Math.random()*10+10)+"px";
-document.getElementById("estrellas").appendChild(estrella);
+for(let i=0;i<120;i++){
+let e=document.createElement("div");
+e.className="estrella";
+e.innerHTML="✦";
+e.style.left=Math.random()*100+"%";
+e.style.top=Math.random()*100+"%";
+e.style.fontSize=(Math.random()*10+8)+"px";
+document.getElementById("estrellas").appendChild(e);
 }
 
 setInterval(()=>{
-let corazon=document.createElement("div");
-corazon.classList.add("corazon");
-corazon.innerHTML="❤";
-corazon.style.left=Math.random()*100+"vw";
-document.body.appendChild(corazon);
+let c=document.createElement("div");
+c.className="corazon";
+c.innerHTML="❤️";
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
 
 setTimeout(()=>{
-corazon.remove();
-},8000);
+c.remove();
+},7000);
+},500);
 
-},300);
+setInterval(()=>{
+let r=document.createElement("div");
+r.className="rosa";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"vw";
+document.body.appendChild(r);
+
+setTimeout(()=>{
+r.remove();
+},8000);
+},1000);
 
 </script>
 
