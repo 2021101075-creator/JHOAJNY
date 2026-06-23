@@ -2,158 +2,127 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Jhojany ❤️</title>
-
+<title>Regalo</title>
 <style>
-body{
-margin:0;
-height:100vh;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(180deg,#0f172a,#1e1b4b,#000);
-font-family:Arial,sans-serif;
-color:white;
-}
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        font-family: Arial, sans-serif;
+    }
 
-.estrellas{
-position:fixed;
-width:100%;
-height:100%;
-background-image:radial-gradient(white 1px,transparent 1px);
-background-size:40px 40px;
-opacity:.6;
-}
+    /* Fondo galaxia */
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, #1a1a40, #000);
+        overflow: hidden;
+    }
 
-.centro{
-text-align:center;
-z-index:10;
-}
+    .stars::after {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: url('https://i.imgur.com/NM8Zl6g.png');
+        opacity: 0.2;
+        animation: moveStars 60s linear infinite;
+    }
 
-.regalo{
-font-size:120px;
-cursor:pointer;
-animation:latir 1.5s infinite;
-}
+    @keyframes moveStars {
+        from {transform: translate(0,0);}
+        to {transform: translate(-500px,-500px);}
+    }
 
-@keyframes latir{
-50%{transform:scale(1.1);}
-}
+    /* Caja regalo */
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+        position: relative;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: 0.5s;
+        z-index: 2;
+    }
 
-.texto{
-font-size:28px;
-margin-top:10px;
-}
+    .box::before {
+        content: "TOCA PARA ABRIR";
+        position: absolute;
+        color: white;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+        top: 80px;
+    }
 
-#sorpresa{
-display:none;
-animation:aparecer 1.5s;
-}
+    .ribbon {
+        position: absolute;
+        width: 100%;
+        height: 20px;
+        background: gold;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-.rosa{
-font-size:140px;
-animation:latir 2s infinite;
-}
+    /* Rosa */
+    .rose {
+        display: none;
+        font-size: 80px;
+        animation: bloom 2s ease-in-out forwards;
+    }
 
-@keyframes aparecer{
-from{opacity:0;transform:scale(.5);}
-to{opacity:1;transform:scale(1);}
-}
+    @keyframes bloom {
+        0% {transform: scale(0); opacity: 0;}
+        100% {transform: scale(1.5); opacity: 1;}
+    }
 
-.mensaje{
-max-width:600px;
-padding:20px;
-font-size:22px;
-line-height:1.8;
-}
+    .message {
+        display: none;
+        color: white;
+        margin-top: 20px;
+        font-size: 24px;
+        text-align: center;
+        animation: fadeIn 3s ease-in;
+    }
 
-.corazon{
-position:fixed;
-font-size:25px;
-animation:subir 7s linear forwards;
-}
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
 
-@keyframes subir{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-100%{
-transform:translateY(-100px);
-opacity:1;
-}
-}
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 2;
+    }
 </style>
 </head>
-
 <body>
 
-<div class="estrellas"></div>
+<div class="stars"></div>
 
-<div class="centro" id="inicio">
-<div class="regalo" onclick="abrir()">🎁</div>
-<div class="texto">Toca para abrir ❤️</div>
-</div>
+<div class="container">
+    <div class="box" onclick="openGift()">
+        <div class="ribbon"></div>
+    </div>
 
-<div class="centro" id="sorpresa">
-
-<div class="rosa">🌹</div>
-
-<div class="mensaje">
-
-<h2>Para Jhojany ❤️</h2>
-
-<p>
-Hay algo que quería decirte desde hace tiempo...
-</p>
-
-<h1 style="color:#ff8fab;">
-Me gustas mucho ❤️
-</h1>
-
-<p>
-Me gusta tu sonrisa,
-tu forma de ser
-y la manera en que haces especiales incluso los días más simples.
-</p>
-
-<p>
-Solo quería que lo supieras. 🌹
-</p>
-
-<p>
-Con cariño,
-<br><br>
-<b>Daniel ❤️</b>
-</p>
-
-</div>
-
+    <div class="rose" id="rose">🌹</div>
+    <div class="message" id="msg">ME GUSTAS MUCHO 💖</div>
 </div>
 
 <script>
-
-function abrir(){
-document.getElementById("inicio").style.display="none";
-document.getElementById("sorpresa").style.display="block";
+function openGift() {
+    document.querySelector('.box').style.display = 'none';
+    document.getElementById('rose').style.display = 'block';
+    document.getElementById('msg').style.display = 'block';
 }
-
-setInterval(()=>{
-let c=document.createElement("div");
-c.className="corazon";
-c.innerHTML="❤️";
-c.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(c);
-
-setTimeout(()=>{
-c.remove();
-},7000);
-
-},400);
-
 </script>
 
 </body>
